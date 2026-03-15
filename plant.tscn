@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://no2qd4m2mssy"]
+
+[ext_resource type="Script" uid="uid://dxyt1ystpelfm" path="res://plant.gd" id="1_c2kdh"]
+[ext_resource type="Texture2D" uid="uid://ckwunsjofs8qp" path="res://FarmSprites/sprite_tree25.png" id="1_t03al"]
+[ext_resource type="Texture2D" uid="uid://b5p02s1fbistc" path="res://FarmSprites/sprite_tree00.png" id="2_hnm5f"]
+[ext_resource type="Texture2D" uid="uid://cbrwm4q7pwyw6" path="res://FarmSprites/sprite_tree01.png" id="3_ssry7"]
+[ext_resource type="Texture2D" uid="uid://d3k12wqjyi5ir" path="res://FarmSprites/sprite_tree02.png" id="4_ghtbb"]
+[ext_resource type="Texture2D" uid="uid://b44gxed5uek35" path="res://FarmSprites/sprite_tree03.png" id="5_p3irq"]
+[ext_resource type="Texture2D" uid="uid://d02eha3jf2p5q" path="res://FarmSprites/sprite_tree04.png" id="6_h5cvd"]
+[ext_resource type="Texture2D" uid="uid://c4snkerlxbqtb" path="res://FarmSprites/sprite_tree05.png" id="7_ksfmy"]
+[ext_resource type="Texture2D" uid="uid://b4rkvt0hmxakr" path="res://FarmSprites/sprite_tree06.png" id="8_u7jbj"]
+[ext_resource type="Texture2D" uid="uid://dcxo4tu8khe12" path="res://FarmSprites/sprite_tree07.png" id="9_yby7l"]
+[ext_resource type="Texture2D" uid="uid://b104r0ix82qop" path="res://FarmSprites/sprite_tree08.png" id="10_j6nf5"]
+[ext_resource type="Texture2D" uid="uid://ddl3jj8sa6li" path="res://FarmSprites/sprite_tree09.png" id="11_n0p5w"]
+[ext_resource type="Texture2D" uid="uid://roc6oes8o6e5" path="res://FarmSprites/sprite_tree10.png" id="12_jn05x"]
+[ext_resource type="Texture2D" uid="uid://bj1j7odo4250o" path="res://FarmSprites/sprite_tree11.png" id="13_7qx7b"]
+[ext_resource type="Texture2D" uid="uid://bnx7tqwxb3dqi" path="res://FarmSprites/sprite_tree12.png" id="14_oxpkb"]
+[ext_resource type="Texture2D" uid="uid://bsvaej8mjoccw" path="res://FarmSprites/sprite_tree13.png" id="15_8atfe"]
+[ext_resource type="Texture2D" uid="uid://c6vqjxhkvg02o" path="res://FarmSprites/sprite_tree14.png" id="16_v7yse"]
+[ext_resource type="Texture2D" uid="uid://cvr5k3bau27wg" path="res://FarmSprites/sprite_tree15.png" id="17_usto5"]
+[ext_resource type="Texture2D" uid="uid://cuog72s7htbuh" path="res://FarmSprites/sprite_tree16.png" id="18_udxuh"]
+[ext_resource type="Texture2D" uid="uid://um3y55vf4yxe" path="res://FarmSprites/sprite_tree17.png" id="19_sykwn"]
+[ext_resource type="Texture2D" uid="uid://cmamrl3all1ik" path="res://FarmSprites/sprite_tree18.png" id="20_tx428"]
+[ext_resource type="Texture2D" uid="uid://d1upke0jg8y3p" path="res://FarmSprites/sprite_tree19.png" id="21_v6pgv"]
+[ext_resource type="Texture2D" uid="uid://dtah1es40khh4" path="res://FarmSprites/sprite_tree20.png" id="22_dhpab"]
+[ext_resource type="Texture2D" uid="uid://c41r68ahe64at" path="res://FarmSprites/sprite_tree21.png" id="23_vawlt"]
+[ext_resource type="Texture2D" uid="uid://b7otydibrd4bm" path="res://FarmSprites/sprite_tree22.png" id="24_wax5f"]
+[ext_resource type="Texture2D" uid="uid://bm03u7xk1yy4b" path="res://FarmSprites/sprite_tree23.png" id="25_cdnpr"]
+[ext_resource type="Texture2D" uid="uid://dvfrdv307lp07" path="res://FarmSprites/sprite_tree24.png" id="26_da668"]
+
+[sub_resource type="Animation" id="Animation_ea252"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hnm5f")]
+}
+
+[sub_resource type="Animation" id="Animation_q2qdm"]
+resource_name = "grow"
+length = 2.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0035055876, 0.1, 0.2, 0.3, 0.4, 0.5, 0.59649444, 0.6964944, 0.8, 0.9035056, 1.0035056, 1.1035056, 1.2035056, 1.3035057, 1.4000001, 1.5, 1.6, 1.7, 1.8035057, 1.9035056, 2.0035057, 2.1035056, 2.2, 2.3035057, 2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_hnm5f"), ExtResource("3_ssry7"), ExtResource("4_ghtbb"), ExtResource("5_p3irq"), ExtResource("6_h5cvd"), ExtResource("7_ksfmy"), ExtResource("8_u7jbj"), ExtResource("9_yby7l"), ExtResource("10_j6nf5"), ExtResource("11_n0p5w"), ExtResource("12_jn05x"), ExtResource("13_7qx7b"), ExtResource("14_oxpkb"), ExtResource("15_8atfe"), ExtResource("16_v7yse"), ExtResource("17_usto5"), ExtResource("18_udxuh"), ExtResource("19_sykwn"), ExtResource("20_tx428"), ExtResource("21_v6pgv"), ExtResource("22_dhpab"), ExtResource("23_vawlt"), ExtResource("24_wax5f"), ExtResource("25_cdnpr"), ExtResource("26_da668"), ExtResource("1_t03al")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_087b7"]
+_data = {
+&"RESET": SubResource("Animation_ea252"),
+&"grow": SubResource("Animation_q2qdm")
+}
+
+[node name="Plant" type="VBoxContainer" unique_id=176585633]
+script = ExtResource("1_c2kdh")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=680454738]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_hnm5f")
+
+[node name="Button" type="Button" parent="." unique_id=1846928833]
+layout_mode = 2
+text = "Plant"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=903063307]
+libraries/ = SubResource("AnimationLibrary_087b7")
+speed_scale = 0.25
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

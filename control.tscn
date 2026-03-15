@@ -1,0 +1,686 @@
+[gd_scene format=3 uid="uid://ce1gg1iqb22ed"]
+
+[ext_resource type="Script" uid="uid://bod3yf8nmypx0" path="res://control.gd" id="1_6a6wx"]
+[ext_resource type="Script" uid="uid://djvtk3ywpod1f" path="res://room_manager.gd" id="2_ee4bf"]
+[ext_resource type="ButtonGroup" uid="uid://b5riokntr24rf" path="res://top_bar_selection_group.tres" id="2_fj5cn"]
+[ext_resource type="ButtonGroup" uid="uid://cc40tj4j7kd12" path="res://room_selection_group.tres" id="3_kbped"]
+[ext_resource type="Script" uid="uid://dv7hlxy72e4se" path="res://room_panel.gd" id="4_kbped"]
+[ext_resource type="Script" uid="uid://udn1fpen7dgp" path="res://room_panel_upgrade.gd" id="5_kbped"]
+[ext_resource type="Script" uid="uid://cdi1m08pqdj71" path="res://upgrades_manager.gd" id="6_iy58a"]
+
+[node name="Control" type="Control" unique_id=1831159199 node_paths=PackedStringArray("grid_container", "upgrade_buttons", "room_buttons")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6a6wx")
+grid_container = [NodePath("RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/ScrollContainer/0"), NodePath("RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/ScrollContainer/1"), NodePath("RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/ScrollContainer/2"), NodePath("RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/ScrollContainer/3")]
+upgrade_buttons = [NodePath("RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade1/MarginContainer/Room1/ScrollContainer/0/AllPlantHarvest"), NodePath("RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade2/MarginContainer/Room1/ScrollContainer/0/AllPlantHarvest"), NodePath("RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade3/MarginContainer/Room1/ScrollContainer/0/AllPlantHarvest"), NodePath("RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade4/MarginContainer/Room1/ScrollContainer/0/AllPlantHarvest")]
+room_buttons = [NodePath("RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/HBoxContainer/AllPlantHarvest"), NodePath("RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/HBoxContainer/AllPlantHarvest"), NodePath("RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/HBoxContainer2/AllPlantHarvest"), NodePath("RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/HBoxContainer/AllPlantHarvest")]
+
+[node name="Panel" type="Panel" parent="." unique_id=88126042]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoomManager" type="MarginContainer" parent="." unique_id=798486355]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("2_ee4bf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager" unique_id=1840723078]
+layout_mode = 2
+
+[node name="TopBar" type="HBoxContainer" parent="RoomManager/VBoxContainer" unique_id=1342999797]
+layout_mode = 2
+
+[node name="LeftBar2" type="VBoxContainer" parent="RoomManager/VBoxContainer/TopBar" unique_id=1336122638]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="RoomManager/VBoxContainer/TopBar" unique_id=16584057]
+layout_mode = 2
+
+[node name="Game" type="Button" parent="RoomManager/VBoxContainer/TopBar/HBoxContainer3" unique_id=18172116]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_fj5cn")
+text = "Game"
+
+[node name="Options" type="Button" parent="RoomManager/VBoxContainer/TopBar/HBoxContainer3" unique_id=2138749245]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_fj5cn")
+text = "Settings"
+
+[node name="Upgrades" type="Button" parent="RoomManager/VBoxContainer/TopBar/HBoxContainer3" unique_id=668464730]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_fj5cn")
+text = "Upgrades"
+
+[node name="Game" type="PanelContainer" parent="RoomManager/VBoxContainer" unique_id=965030418]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game" unique_id=1034185656]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftBar" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=1856171048]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Room1Button" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/LeftBar" unique_id=270077717]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Home"
+
+[node name="Room2Button" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/LeftBar" unique_id=1140399364]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Studio"
+
+[node name="Room3Button" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/LeftBar" unique_id=1193061597]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Farm"
+
+[node name="Room4Button" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/LeftBar" unique_id=17420186]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Factory"
+
+[node name="Room1Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=1896490493 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label", "all_plant_harvest_button")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_kbped")
+money_label = NodePath("MarginContainer/Room1/Data/MoneyLabel")
+speed_button = NodePath("MarginContainer/Room1/Data/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/Data/HBoxContainer/SpeedLabel")
+grid_container = NodePath("MarginContainer/Room1/ScrollContainer/0")
+plant_button = NodePath("MarginContainer/Room1/Data/HBoxContainer2/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/Data/HBoxContainer2/PlantLabel")
+all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer/AllPlantHarvest")
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel" unique_id=178264618]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer" unique_id=1328577238]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1" unique_id=324585913]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data" unique_id=884418001]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Money : 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data" unique_id=1351271370]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer" unique_id=412170201]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Speed"
+
+[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer" unique_id=556543249]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed : 0.25x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data" unique_id=1308811377]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2" unique_id=276519365]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Plant"
+
+[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2" unique_id=1071035492]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Plants :"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1" unique_id=91934764]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="0" type="GridContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/ScrollContainer" unique_id=363975430]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer" unique_id=347128115]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Home" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/HBoxContainer" unique_id=1286783186]
+layout_mode = 2
+text = "Home"
+
+[node name="AllPlantHarvest" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/HBoxContainer" unique_id=1503776737]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+text = "Plant all/Harvest all"
+
+[node name="Room2Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=489909718 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label", "all_plant_harvest_button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_kbped")
+money_label = NodePath("MarginContainer/Room1/HBoxContainer/MoneyLabel")
+speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedLabel")
+grid_container = NodePath("MarginContainer/Room1/ScrollContainer/1")
+plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantLabel")
+index = 1
+all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer/AllPlantHarvest")
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel" unique_id=1203211183]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer" unique_id=2143965705]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1" unique_id=634508805]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=567130227]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Money : 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=838751063]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1395678063]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Speed"
+
+[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=187791971]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed : 0.25x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=841266730]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1842663710]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Plant"
+
+[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=439746434]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Plants :"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1" unique_id=2026983387]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="1" type="GridContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/ScrollContainer" unique_id=102931990]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer" unique_id=841307882]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Studio" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/HBoxContainer" unique_id=1180307198]
+layout_mode = 2
+text = "Studio"
+
+[node name="AllPlantHarvest" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/HBoxContainer" unique_id=1313742551]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+text = "Plant all/Harvest all"
+
+[node name="Room3Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=939687625 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label", "all_plant_harvest_button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_kbped")
+money_label = NodePath("MarginContainer/Room1/HBoxContainer/MoneyLabel")
+speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedLabel")
+grid_container = NodePath("MarginContainer/Room1/ScrollContainer/2")
+plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantLabel")
+index = 2
+all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer2/AllPlantHarvest")
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel" unique_id=1319637304]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer" unique_id=1039907177]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1" unique_id=952713842]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=710750871]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Money : 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=2113420776]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=466608242]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Speed"
+
+[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1420440933]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed : 0.25x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=675634004]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1800810270]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Plant"
+
+[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1308048607]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Plants :"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1" unique_id=1101760553]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="2" type="GridContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/ScrollContainer" unique_id=1339657006]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer" unique_id=1551346948]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Farm" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/HBoxContainer2" unique_id=319268523]
+layout_mode = 2
+text = "Farm"
+
+[node name="AllPlantHarvest" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/HBoxContainer2" unique_id=456225175]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+text = "Plant all/Harvest all"
+
+[node name="Room4Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=1052038102 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label", "all_plant_harvest_button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_kbped")
+money_label = NodePath("MarginContainer/Room1/HBoxContainer/MoneyLabel")
+speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedLabel")
+grid_container = NodePath("MarginContainer/Room1/ScrollContainer/3")
+plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantLabel")
+index = 3
+all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer/AllPlantHarvest")
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel" unique_id=571510675]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer" unique_id=949325341]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1" unique_id=776870046]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=862900474]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Money : 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=1200372219]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1308709867]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Speed"
+
+[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1351633529]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed : 0.25x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=1894757855]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1927919904]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Plant"
+
+[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=463492319]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Plants :"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1" unique_id=355080215]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="3" type="GridContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/ScrollContainer" unique_id=217768697]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer" unique_id=1059400798]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Factory" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/HBoxContainer" unique_id=891302761]
+layout_mode = 2
+text = "Factory"
+
+[node name="AllPlantHarvest" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/HBoxContainer" unique_id=385815307]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+text = "Plant all/Harvest all"
+
+[node name="Settings" type="PanelContainer" parent="RoomManager/VBoxContainer" unique_id=1413573007]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftBar2" type="VBoxContainer" parent="RoomManager/VBoxContainer/Settings" unique_id=785334131]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Upgrades" type="PanelContainer" parent="RoomManager/VBoxContainer" unique_id=2089531389]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("6_iy58a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Upgrades" unique_id=1542253173]
+layout_mode = 2
+
+[node name="LeftBar" type="VBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer" unique_id=688286363]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Room1ButtonUpgrade" type="Button" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/LeftBar" unique_id=544968008]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Home"
+
+[node name="Room2ButtonUpgrade" type="Button" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/LeftBar" unique_id=1860890095]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Studio"
+
+[node name="Room3ButtonUpgrade" type="Button" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/LeftBar" unique_id=1884675589]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Farm"
+
+[node name="Room4ButtonUpgrade" type="Button" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/LeftBar" unique_id=1277771587]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Factory"
+
+[node name="RoomPanelUpgrade1" type="PanelContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer" unique_id=808239504 node_paths=PackedStringArray("all_plant_harvest_button")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_kbped")
+all_plant_harvest_button = NodePath("MarginContainer/Room1/ScrollContainer/0/AllPlantHarvest")
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade1" unique_id=1393945663]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade1/MarginContainer" unique_id=1589171768]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="HBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade1/MarginContainer/Room1" unique_id=1966179407]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade1/MarginContainer/Room1" unique_id=1312886686]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="0" type="GridContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade1/MarginContainer/Room1/ScrollContainer" unique_id=527088853]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="AllPlantHarvest" type="Button" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade1/MarginContainer/Room1/ScrollContainer/0" unique_id=661121821]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Max Plant"
+
+[node name="PanelLabel" type="Label" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade1/MarginContainer" unique_id=1144965694]
+layout_mode = 2
+text = "Home"
+
+[node name="RoomPanelUpgrade2" type="PanelContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer" unique_id=1934691258 node_paths=PackedStringArray("all_plant_harvest_button")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_kbped")
+all_plant_harvest_button = NodePath("MarginContainer/Room1/ScrollContainer/0/AllPlantHarvest")
+index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade2" unique_id=2059043629]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade2/MarginContainer" unique_id=610081011]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="HBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade2/MarginContainer/Room1" unique_id=1653794690]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade2/MarginContainer/Room1" unique_id=408632326]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="0" type="GridContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade2/MarginContainer/Room1/ScrollContainer" unique_id=1441503469]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="AllPlantHarvest" type="Button" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade2/MarginContainer/Room1/ScrollContainer/0" unique_id=1337874267]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Max Plant"
+
+[node name="PanelLabel" type="Label" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade2/MarginContainer" unique_id=1936676506]
+layout_mode = 2
+text = "Home"
+
+[node name="RoomPanelUpgrade3" type="PanelContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer" unique_id=2093229234 node_paths=PackedStringArray("all_plant_harvest_button")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_kbped")
+all_plant_harvest_button = NodePath("MarginContainer/Room1/ScrollContainer/0/AllPlantHarvest")
+index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade3" unique_id=1414161670]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade3/MarginContainer" unique_id=901183673]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="HBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade3/MarginContainer/Room1" unique_id=358769705]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade3/MarginContainer/Room1" unique_id=490194376]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="0" type="GridContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade3/MarginContainer/Room1/ScrollContainer" unique_id=1866518204]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="AllPlantHarvest" type="Button" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade3/MarginContainer/Room1/ScrollContainer/0" unique_id=1067517364]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Max Plant"
+
+[node name="PanelLabel" type="Label" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade3/MarginContainer" unique_id=1278448200]
+layout_mode = 2
+text = "Home"
+
+[node name="RoomPanelUpgrade4" type="PanelContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer" unique_id=1370349619 node_paths=PackedStringArray("all_plant_harvest_button")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_kbped")
+all_plant_harvest_button = NodePath("MarginContainer/Room1/ScrollContainer/0/AllPlantHarvest")
+index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade4" unique_id=1639792744]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade4/MarginContainer" unique_id=1656462872]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="HBoxContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade4/MarginContainer/Room1" unique_id=835290646]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade4/MarginContainer/Room1" unique_id=2139633498]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="0" type="GridContainer" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade4/MarginContainer/Room1/ScrollContainer" unique_id=1602489100]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="AllPlantHarvest" type="Button" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade4/MarginContainer/Room1/ScrollContainer/0" unique_id=1487006651]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Max Plant"
+
+[node name="PanelLabel" type="Label" parent="RoomManager/VBoxContainer/Upgrades/HBoxContainer/RoomPanelUpgrade4/MarginContainer" unique_id=1105636778]
+layout_mode = 2
+text = "Home"
+
+[node name="ProgressBar" type="ProgressBar" parent="RoomManager" unique_id=1574855296]
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 1000000.0
+
+[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]
+[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]
+[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]

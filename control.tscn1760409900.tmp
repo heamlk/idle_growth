@@ -1,0 +1,359 @@
+[gd_scene format=3 uid="uid://ce1gg1iqb22ed"]
+
+[ext_resource type="PackedScene" uid="uid://no2qd4m2mssy" path="res://plant.tscn" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://djvtk3ywpod1f" path="res://margin_container.gd" id="2_ee4bf"]
+[ext_resource type="ButtonGroup" uid="uid://cc40tj4j7kd12" path="res://room_selection_group.tres" id="3_kbped"]
+[ext_resource type="Script" uid="uid://dv7hlxy72e4se" path="res://room_1_panel.gd" id="4_kbped"]
+
+[node name="Control" type="Control" unique_id=1831159199]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoomManager" type="MarginContainer" parent="." unique_id=798486355]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("2_ee4bf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager" unique_id=1034185656]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftBar" type="VBoxContainer" parent="RoomManager/HBoxContainer" unique_id=1856171048]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Room1Button" type="Button" parent="RoomManager/HBoxContainer/LeftBar" unique_id=270077717]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Home"
+
+[node name="Room2Button" type="Button" parent="RoomManager/HBoxContainer/LeftBar" unique_id=1140399364]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Studio"
+
+[node name="Room3Button" type="Button" parent="RoomManager/HBoxContainer/LeftBar" unique_id=1193061597]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Farm"
+
+[node name="Room4Button" type="Button" parent="RoomManager/HBoxContainer/LeftBar" unique_id=17420186]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_kbped")
+text = "Factory"
+
+[node name="Room1Panel" type="PanelContainer" parent="RoomManager/HBoxContainer" unique_id=1896490493 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_kbped")
+money_label = NodePath("MarginContainer/Room1/HBoxContainer/MoneyLabel")
+speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedLabel")
+grid_container = NodePath("MarginContainer/Room1/ScrollContainer/GridContainer")
+plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/HBoxContainer/Room1Panel" unique_id=178264618]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer" unique_id=1328577238]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1" unique_id=324585913]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer" unique_id=884418001]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Money : 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer" unique_id=1351271370]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedButton" type="Button" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=412170201]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Speed"
+
+[node name="SpeedLabel" type="Label" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=556543249]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed : 0.25x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer" unique_id=1308811377]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlantButton" type="Button" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=276519365]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Plant"
+
+[node name="PlantLabel" type="Label" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1071035492]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Plants :"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1" unique_id=91934764]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/ScrollContainer" unique_id=363975430]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="Plant" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/ScrollContainer/GridContainer" unique_id=176585633 instance=ExtResource("1_0fbet")]
+layout_mode = 2
+
+[node name="Home" type="Label" parent="RoomManager/HBoxContainer/Room1Panel/MarginContainer" unique_id=1286783186]
+layout_mode = 2
+text = "Home"
+
+[node name="Room2Panel" type="PanelContainer" parent="RoomManager/HBoxContainer" unique_id=489909718]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/HBoxContainer/Room2Panel" unique_id=1203211183]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer" unique_id=2143965705]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1" unique_id=634508805]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=567130227]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Money : 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=838751063]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedButton" type="Button" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1395678063]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Speed"
+
+[node name="SpeedLabel" type="Label" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=187791971]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed : 0.25x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=841266730]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlantButton" type="Button" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1842663710]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Plant"
+
+[node name="PlantLabel" type="Label" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=439746434]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Plants :"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1" unique_id=2026983387]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/ScrollContainer" unique_id=102931990]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="Plant" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/ScrollContainer/GridContainer" unique_id=1957676922 instance=ExtResource("1_0fbet")]
+layout_mode = 2
+
+[node name="Studio" type="Label" parent="RoomManager/HBoxContainer/Room2Panel/MarginContainer" unique_id=1180307198]
+layout_mode = 2
+text = "Studio"
+
+[node name="Room3Panel" type="PanelContainer" parent="RoomManager/HBoxContainer" unique_id=939687625]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/HBoxContainer/Room3Panel" unique_id=1319637304]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer" unique_id=1039907177]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1" unique_id=952713842]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=710750871]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Money : 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=2113420776]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedButton" type="Button" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=466608242]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Speed"
+
+[node name="SpeedLabel" type="Label" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1420440933]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed : 0.25x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=675634004]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlantButton" type="Button" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1800810270]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Plant"
+
+[node name="PlantLabel" type="Label" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1308048607]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Plants :"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1" unique_id=1101760553]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/ScrollContainer" unique_id=1339657006]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="Plant" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/ScrollContainer/GridContainer" unique_id=1616957879 instance=ExtResource("1_0fbet")]
+layout_mode = 2
+
+[node name="Farm" type="Label" parent="RoomManager/HBoxContainer/Room3Panel/MarginContainer" unique_id=319268523]
+layout_mode = 2
+text = "Farm"
+
+[node name="Room4Panel" type="PanelContainer" parent="RoomManager/HBoxContainer" unique_id=1052038102]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomManager/HBoxContainer/Room4Panel" unique_id=571510675]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Room1" type="VBoxContainer" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer" unique_id=949325341]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1" unique_id=776870046]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=862900474]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Money : 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=1200372219]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedButton" type="Button" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1308709867]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Speed"
+
+[node name="SpeedLabel" type="Label" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1351633529]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed : 0.25x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=1894757855]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlantButton" type="Button" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1927919904]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Plant"
+
+[node name="PlantLabel" type="Label" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=463492319]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Plants :"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1" unique_id=355080215]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/ScrollContainer" unique_id=217768697]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+
+[node name="Plant" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/ScrollContainer/GridContainer" unique_id=1285045281 instance=ExtResource("1_0fbet")]
+layout_mode = 2
+
+[node name="Factory" type="Label" parent="RoomManager/HBoxContainer/Room4Panel/MarginContainer" unique_id=891302761]
+layout_mode = 2
+text = "Factory"
+
+[connection signal="pressed" from="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="RoomManager/HBoxContainer/Room1Panel" method="_on_speed_button_pressed"]
+[connection signal="pressed" from="RoomManager/HBoxContainer/Room1Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="RoomManager/HBoxContainer/Room1Panel" method="_on_plant_button_pressed"]
+[connection signal="pressed" from="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="RoomManager/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]
+[connection signal="pressed" from="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="RoomManager/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]
+[connection signal="pressed" from="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="RoomManager/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]
