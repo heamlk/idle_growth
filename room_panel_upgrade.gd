@@ -13,8 +13,8 @@ func _on_all_plant_harvest_pressed() -> void :
 		Global.money = Global.money - Global.all_plant_harvest_price[index] 
 		Global.all_plant_harvest_bool[index] = true
 		
-		SaveLoad.contents_to_save.all_plant_harvest_button = Global.all_plant_harvest_bool
-		SaveLoad._save()
+		#SaveLoad.contents_to_save.all_plant_harvest_button = Global.all_plant_harvest_bool
+		#SaveLoad._save()
 		
 		Global.all_plant_harvest_signal.emit(index)
 		

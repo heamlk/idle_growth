@@ -31,8 +31,8 @@ func display_money():
 	var money := Global.money
 	money_label.text = "Money : " + str(money) + " $"
 	progress_bar.value = money
-	SaveLoad.contents_to_save.money = money
-	SaveLoad._save()
+	#SaveLoad.contents_to_save.money = money
+	#SaveLoad._save()
 
 func display_speed_price():
 	speed_button.tooltip_text = "Price : " + str(Global.speed_price[index])
@@ -52,11 +52,11 @@ func _on_speed_button_pressed() -> void:
 		
 		Global.money-=Global.speed_price[index]
 		
-		SaveLoad.contents_to_save.plant_speed = Global.plant_speed
+		#SaveLoad.contents_to_save.plant_speed = Global.plant_speed
 		
 		Global.speed_price_setter(index, snapped(Global.speed_price[index] + Global.speed_price[index] * 0.1, 0.01))
-		SaveLoad.contents_to_save.speed_price = Global.speed_price
-		SaveLoad._save()
+		#SaveLoad.contents_to_save.speed_price = Global.speed_price
+		#SaveLoad._save()
 		speed_button.tooltip_text = "Price : " + str(Global.speed_price[index])
 
 func _on_plant_button_pressed() -> void:
@@ -66,11 +66,11 @@ func _on_plant_button_pressed() -> void:
 		
 		Global.money -= Global.plant_price[index]
 		Global.plants[index] += 1
-		SaveLoad.contents_to_save.plants = Global.plants
+		#SaveLoad.contents_to_save.plants = Global.plants
 		
 		Global.plant_price_setter(index, snapped(Global.plant_price[index] + Global.plant_price[index] * 0.1, 0.01))
-		SaveLoad.contents_to_save.plant_price = Global.plant_price
-		SaveLoad._save()
+		#SaveLoad.contents_to_save.plant_price = Global.plant_price
+		#SaveLoad._save()
 
 func _on_all_plant_harvest() -> void :
 	for child in grid_container.get_children():

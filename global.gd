@@ -18,6 +18,7 @@ var plants := [1, 0, 0, 0] #saved
 var plant_price := [1, 20, 50, 100] #saved
 var plant_limit := [2, 9, 50, 100] 
 
+var plant_revenue := [1, 3, 9, 100]
 
 var all_plant_harvest_bool : Array = [0, 0, 0, 0] #saved
 var all_plant_harvest_price : Array[int] = [100, 500, 1000, 10000]

@@ -28,6 +28,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Timer" type="Timer" parent="." unique_id=839649525]
+wait_time = 30.0
+autostart = true
+
 [node name="RoomManager" type="MarginContainer" parent="." unique_id=798486355]
 layout_mode = 1
 anchors_preset = 15
@@ -35,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -43,17 +48,21 @@ script = ExtResource("2_ee4bf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RoomManager" unique_id=1840723078]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TopBar" type="HBoxContainer" parent="RoomManager/VBoxContainer" unique_id=1342999797]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LeftBar2" type="VBoxContainer" parent="RoomManager/VBoxContainer/TopBar" unique_id=1336122638]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="RoomManager/VBoxContainer/TopBar" unique_id=16584057]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Game" type="Button" parent="RoomManager/VBoxContainer/TopBar/HBoxContainer3" unique_id=18172116]
 unique_name_in_owner = true
@@ -79,15 +88,18 @@ text = "Upgrades"
 [node name="Game" type="PanelContainer" parent="RoomManager/VBoxContainer" unique_id=965030418]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game" unique_id=1034185656]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="LeftBar" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=1856171048]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="Room1Button" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/LeftBar" unique_id=270077717]
 unique_name_in_owner = true
@@ -121,6 +133,7 @@ text = "Factory"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("4_kbped")
 money_label = NodePath("MarginContainer/Room1/Data/MoneyLabel")
 speed_button = NodePath("MarginContainer/Room1/Data/HBoxContainer/SpeedButton")
@@ -132,6 +145,7 @@ all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer/AllPlantHarve
 
 [node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel" unique_id=178264618]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -678,6 +692,7 @@ layout_mode = 2
 size_flags_vertical = 8
 max_value = 1000000.0
 
+[connection signal="timeout" from="Timer" to="RoomManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
 [connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]
 [connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]

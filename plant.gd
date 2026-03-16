@@ -2,8 +2,12 @@ extends VBoxContainer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var button: Button = $Button
-
+var index : int
 var plant_state = "not grown"
+
+func _ready() -> void:
+	index = int(get_parent().name)
+	button.tooltip_text = "Income : " + str(Global.plant_revenue[index])
 
 func _on_button_pressed() -> void:
 	#update speed scale
@@ -22,7 +26,7 @@ func _on_button_pressed() -> void:
 		plant_state = "not grown"
 		button.text = "Plant"
 		
-		Global.money += 100
+		Global.money += Global.plant_revenue[index]
 		Global.money_signal.emit()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

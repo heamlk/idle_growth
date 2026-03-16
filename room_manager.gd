@@ -43,3 +43,16 @@ func show_room (room_to_show: PanelContainer) -> void :
 		room.hide()
 	
 	room_to_show.show()
+
+# automatic saving
+func _on_timer_timeout() -> void:
+	SaveLoad.contents_to_save.all_plant_harvest_button = Global.all_plant_harvest_bool
+	
+	SaveLoad.contents_to_save.plants = Global.plants
+	SaveLoad.contents_to_save.plant_price = Global.plant_price
+	
+	SaveLoad.contents_to_save.plant_speed = Global.plant_speed
+	SaveLoad.contents_to_save.speed_price = Global.speed_price
+	
+	SaveLoad.contents_to_save.money = Global.money
+	SaveLoad._save()

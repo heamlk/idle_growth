@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6vqjxhkvg02o"
-path="res://.godot/imported/sprite_tree14.png-8c3265f85d910bc8f4bbb29ef9587f38.ctex"
+uid="uid://drw33g201sqsp"
+path="res://.godot/imported/sprite_sheet.png-b4e6dcc0caa563a4427d78e59addaf70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FarmSprites/sprite_tree14.png"
-dest_files=["res://.godot/imported/sprite_tree14.png-8c3265f85d910bc8f4bbb29ef9587f38.ctex"]
+source_file="res://FarmSprites/sprite_sheet.png"
+dest_files=["res://.godot/imported/sprite_sheet.png-b4e6dcc0caa563a4427d78e59addaf70.ctex"]
 
 [params]
 
