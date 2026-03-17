@@ -7,7 +7,7 @@ var plant_state = "not grown"
 
 func _ready() -> void:
 	index = int(get_parent().name)
-	button.tooltip_text = "Income : " + str(Global.plant_revenue[index])
+	button.tooltip_text = "Income : " + str(Global.plant_revenue[index]) + "$"
 
 func _on_button_pressed() -> void:
 	#update speed scale
@@ -15,6 +15,7 @@ func _on_button_pressed() -> void:
 	
 	#grow plant
 	if plant_state == "not grown":
+		$Plant.play()
 		animation_player.play("grow")
 		button.text = "..."
 		button.disabled = true
@@ -22,6 +23,7 @@ func _on_button_pressed() -> void:
 	
 	#harvest plant
 	elif plant_state == "harvest":
+		$Harvest.play()
 		animation_player.play("RESET")
 		plant_state = "not grown"
 		button.text = "Plant"

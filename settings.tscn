@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dpu6lc1ptvagl"]
+
+[ext_resource type="Script" uid="uid://dhf14udi5ogv" path="res://settings.gd" id="1_x2hje"]
+
+[node name="Settings" type="PanelContainer" unique_id=1919698119 node_paths=PackedStringArray("window")]
+size_flags_vertical = 3
+script = ExtResource("1_x2hje")
+window = NodePath("MarginContainer/VBoxContainer/Window")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=916192052]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1221641953]
+layout_mode = 2
+
+[node name="Window" type="Window" parent="MarginContainer/VBoxContainer" unique_id=2100458905]
+oversampling_override = 1.0
+position = Vector2i(820, 90)
+size = Vector2i(300, 300)
+visible = false
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Window" unique_id=2037040517]
+offset_left = 108.0
+offset_top = 190.0
+offset_right = 196.0
+offset_bottom = 221.0
+text = "YES"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Window" unique_id=2077502878]
+offset_left = 12.0
+offset_top = 110.0
+offset_right = 286.0
+offset_bottom = 133.0
+text = "Do you want to reset all your data ?"
+
+[node name="ResetSave" type="Button" parent="MarginContainer/VBoxContainer" unique_id=809478354]
+visible = false
+layout_mode = 2
+text = "Reset save"
+
+[connection signal="close_requested" from="MarginContainer/VBoxContainer/Window" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Window/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ResetSave" to="." method="_on_reset_save_pressed"]

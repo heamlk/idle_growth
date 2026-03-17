@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://ce1gg1iqb22ed"]
 
 [ext_resource type="Script" uid="uid://bod3yf8nmypx0" path="res://control.gd" id="1_6a6wx"]
+[ext_resource type="AudioStream" uid="uid://ci6pkxig7sllo" path="res://Sounds/Gametheme.ogg" id="2_6a6wx"]
 [ext_resource type="Script" uid="uid://djvtk3ywpod1f" path="res://room_manager.gd" id="2_ee4bf"]
 [ext_resource type="ButtonGroup" uid="uid://b5riokntr24rf" path="res://top_bar_selection_group.tres" id="2_fj5cn"]
 [ext_resource type="ButtonGroup" uid="uid://cc40tj4j7kd12" path="res://room_selection_group.tres" id="3_kbped"]
 [ext_resource type="Script" uid="uid://dv7hlxy72e4se" path="res://room_panel.gd" id="4_kbped"]
 [ext_resource type="Script" uid="uid://udn1fpen7dgp" path="res://room_panel_upgrade.gd" id="5_kbped"]
 [ext_resource type="Script" uid="uid://cdi1m08pqdj71" path="res://upgrades_manager.gd" id="6_iy58a"]
+[ext_resource type="PackedScene" uid="uid://dpu6lc1ptvagl" path="res://settings.tscn" id="7_sky72"]
 
 [node name="Control" type="Control" unique_id=1831159199 node_paths=PackedStringArray("grid_container", "upgrade_buttons", "room_buttons")]
 layout_mode = 3
@@ -31,6 +33,12 @@ grow_vertical = 2
 [node name="Timer" type="Timer" parent="." unique_id=839649525]
 wait_time = 30.0
 autostart = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1247121602]
+stream = ExtResource("2_6a6wx")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [node name="RoomManager" type="MarginContainer" parent="." unique_id=798486355]
 layout_mode = 1
@@ -84,6 +92,12 @@ layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("2_fj5cn")
 text = "Upgrades"
+
+[node name="LeftBar3" type="VBoxContainer" parent="RoomManager/VBoxContainer/TopBar" unique_id=1298388931]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="Game" type="PanelContainer" parent="RoomManager/VBoxContainer" unique_id=965030418]
 layout_mode = 2
@@ -473,15 +487,9 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Plant all/Harvest all"
 
-[node name="Settings" type="PanelContainer" parent="RoomManager/VBoxContainer" unique_id=1413573007]
+[node name="Settings" parent="RoomManager/VBoxContainer" unique_id=1919698119 instance=ExtResource("7_sky72")]
 visible = false
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="LeftBar2" type="VBoxContainer" parent="RoomManager/VBoxContainer/Settings" unique_id=785334131]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-size_flags_horizontal = 0
 
 [node name="Upgrades" type="PanelContainer" parent="RoomManager/VBoxContainer" unique_id=2089531389]
 visible = false

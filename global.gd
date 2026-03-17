@@ -38,3 +38,18 @@ func plant_price_setter(p_index: int, p_value) -> void:
 func speed_price_setter(p_index: int, p_value) -> void:
 	speed_price[p_index] = p_value
 	speed_price_signal.emit()
+
+func reset_to_default():
+	plant_speed = [.25, .25, .25, .25] #saved
+	speed_price = [1, 10, 100, 200] #saved
+
+	plants = [1, 0, 0, 0] #saved
+	plant_price = [1, 20, 50, 100] #saved
+	plant_limit = [2, 9, 50, 100] 
+
+	plant_revenue = [1, 3, 9, 100]
+
+	all_plant_harvest_bool  = [0, 0, 0, 0] #saved
+	all_plant_harvest_price  = [100, 500, 1000, 10000]
+
+	win = false

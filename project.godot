@@ -15,6 +15,10 @@ run/main_scene="res://control.tscn"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cwnjothcgacjp"
+
 [autoload]
 
 Global="*uid://dp06r4x4gqoeu"

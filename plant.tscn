@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dxyt1ystpelfm" path="res://plant.gd" id="1_c2kdh"]
 [ext_resource type="Texture2D" uid="uid://drw33g201sqsp" path="res://FarmSprites/sprite_sheet.png" id="2_mbetm"]
+[ext_resource type="AudioStream" uid="uid://ddbmy1trb0ydr" path="res://Sounds/plant.wav" id="3_qljma"]
+[ext_resource type="AudioStream" uid="uid://qiod3a4mpqk6" path="res://Sounds/harvest.wav" id="4_4oa58"]
 
 [sub_resource type="Animation" id="Animation_ea252"]
 length = 0.001
@@ -62,6 +64,15 @@ scale = Vector2(2.9411764, 2.9411764)
 texture = ExtResource("2_mbetm")
 hframes = 6
 vframes = 5
+
+[node name="Plant" type="AudioStreamPlayer" parent="." unique_id=199105286]
+stream = ExtResource("3_qljma")
+bus = &"SFX"
+
+[node name="Harvest" type="AudioStreamPlayer" parent="." unique_id=363686499]
+stream = ExtResource("4_4oa58")
+volume_db = 3.65
+bus = &"SFX"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
