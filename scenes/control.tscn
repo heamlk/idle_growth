@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ce1gg1iqb22ed"]
 
-[ext_resource type="Script" uid="uid://bod3yf8nmypx0" path="res://control.gd" id="1_6a6wx"]
+[ext_resource type="Script" uid="uid://bod3yf8nmypx0" path="res://scripts/control.gd" id="1_6a6wx"]
 [ext_resource type="AudioStream" uid="uid://ci6pkxig7sllo" path="res://Sounds/Gametheme.ogg" id="2_6a6wx"]
-[ext_resource type="Script" uid="uid://djvtk3ywpod1f" path="res://room_manager.gd" id="2_ee4bf"]
-[ext_resource type="ButtonGroup" uid="uid://b5riokntr24rf" path="res://top_bar_selection_group.tres" id="2_fj5cn"]
-[ext_resource type="ButtonGroup" uid="uid://cc40tj4j7kd12" path="res://room_selection_group.tres" id="3_kbped"]
-[ext_resource type="Script" uid="uid://dv7hlxy72e4se" path="res://room_panel.gd" id="4_kbped"]
-[ext_resource type="Script" uid="uid://udn1fpen7dgp" path="res://room_panel_upgrade.gd" id="5_kbped"]
-[ext_resource type="Script" uid="uid://cdi1m08pqdj71" path="res://upgrades_manager.gd" id="6_iy58a"]
-[ext_resource type="PackedScene" uid="uid://dpu6lc1ptvagl" path="res://settings.tscn" id="7_sky72"]
+[ext_resource type="Script" uid="uid://djvtk3ywpod1f" path="res://scripts/room_manager.gd" id="2_ee4bf"]
+[ext_resource type="ButtonGroup" uid="uid://b5riokntr24rf" path="res://ressources/top_bar_selection_group.tres" id="2_fj5cn"]
+[ext_resource type="ButtonGroup" uid="uid://cc40tj4j7kd12" path="res://ressources/room_selection_group.tres" id="3_kbped"]
+[ext_resource type="Script" uid="uid://dv7hlxy72e4se" path="res://scripts/room_panel.gd" id="4_kbped"]
+[ext_resource type="Script" uid="uid://udn1fpen7dgp" path="res://scripts/room_panel_upgrade.gd" id="5_kbped"]
+[ext_resource type="Script" uid="uid://cdi1m08pqdj71" path="res://scripts/upgrades_manager.gd" id="6_iy58a"]
+[ext_resource type="PackedScene" uid="uid://dpu6lc1ptvagl" path="res://scenes/settings.tscn" id="7_sky72"]
 
 [node name="Control" type="Control" unique_id=1831159199 node_paths=PackedStringArray("grid_container", "upgrade_buttons", "room_buttons")]
 layout_mode = 3
@@ -81,6 +81,7 @@ text = "Game"
 
 [node name="Options" type="Button" parent="RoomManager/VBoxContainer/TopBar/HBoxContainer3" unique_id=2138749245]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("2_fj5cn")
@@ -143,18 +144,20 @@ toggle_mode = true
 button_group = ExtResource("3_kbped")
 text = "Factory"
 
-[node name="Room1Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=1896490493 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label", "all_plant_harvest_button")]
+[node name="Room1Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=1896490493 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "speed_price_label", "grid_container", "plant_button", "plant_label", "plant_price_label", "all_plant_harvest_button")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("4_kbped")
 money_label = NodePath("MarginContainer/Room1/Data/MoneyLabel")
-speed_button = NodePath("MarginContainer/Room1/Data/HBoxContainer/SpeedButton")
-speed_label = NodePath("MarginContainer/Room1/Data/HBoxContainer/SpeedLabel")
+speed_button = NodePath("MarginContainer/Room1/Data/HBoxContainer/VBoxContainer/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/Data/HBoxContainer/VBoxContainer/HBoxContainer/SpeedLabel")
+speed_price_label = NodePath("MarginContainer/Room1/Data/HBoxContainer/VBoxContainer/SpeedPriceLabel")
 grid_container = NodePath("MarginContainer/Room1/ScrollContainer/0")
-plant_button = NodePath("MarginContainer/Room1/Data/HBoxContainer2/PlantButton")
-plant_label = NodePath("MarginContainer/Room1/Data/HBoxContainer2/PlantLabel")
+plant_button = NodePath("MarginContainer/Room1/Data/HBoxContainer2/VBoxContainer/HBoxContainer/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/Data/HBoxContainer2/VBoxContainer/HBoxContainer/PlantLabel")
+plant_price_label = NodePath("MarginContainer/Room1/Data/HBoxContainer2/VBoxContainer/PlantPriceLabel")
 all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer/AllPlantHarvest")
 
 [node name="MarginContainer" type="MarginContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel" unique_id=178264618]
@@ -181,29 +184,53 @@ text = "Money : 0"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer" unique_id=412170201]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer" unique_id=323228335]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer/VBoxContainer" unique_id=2015657731]
+layout_mode = 2
+
+[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=412170201]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Speed"
 
-[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer" unique_id=556543249]
+[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=556543249]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Speed : 0.25x"
+
+[node name="SpeedPriceLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer/VBoxContainer" unique_id=1365786248]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price : "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data" unique_id=1308811377]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2" unique_id=276519365]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2" unique_id=1782899951]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2/VBoxContainer" unique_id=1924233590]
+layout_mode = 2
+
+[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=276519365]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Plant"
 
-[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2" unique_id=1071035492]
+[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1071035492]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Plants :"
+
+[node name="PlantPriceLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1/Data/HBoxContainer2/VBoxContainer" unique_id=287631333]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price : "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room1Panel/MarginContainer/Room1" unique_id=91934764]
 layout_mode = 2
@@ -229,18 +256,20 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Plant all/Harvest all"
 
-[node name="Room2Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=489909718 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label", "all_plant_harvest_button")]
+[node name="Room2Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=489909718 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "speed_price_label", "grid_container", "plant_button", "plant_label", "plant_price_label", "all_plant_harvest_button")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_kbped")
 money_label = NodePath("MarginContainer/Room1/HBoxContainer/MoneyLabel")
-speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton")
-speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedLabel")
+speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SpeedLabel")
+speed_price_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/SpeedPriceLabel")
 grid_container = NodePath("MarginContainer/Room1/ScrollContainer/1")
-plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton")
-plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantLabel")
+plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/PlantLabel")
+plant_price_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/PlantPriceLabel")
 index = 1
 all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer/AllPlantHarvest")
 
@@ -263,33 +292,57 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Money : 0"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=838751063]
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=206334828]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1395678063]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=91964736]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer" unique_id=2032215908]
+layout_mode = 2
+
+[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=704884897]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Speed"
 
-[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=187791971]
+[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=66108211]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Speed : 0.25x"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=841266730]
+[node name="SpeedPriceLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer" unique_id=1107750690]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price : "
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer" unique_id=1973340987]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1842663710]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=2080783874]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1237932143]
+layout_mode = 2
+
+[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1877997753]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Plant"
 
-[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=439746434]
+[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=2081306808]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Plants :"
+
+[node name="PlantPriceLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1241662955]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price : "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1" unique_id=2026983387]
 layout_mode = 2
@@ -315,18 +368,20 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Plant all/Harvest all"
 
-[node name="Room3Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=939687625 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label", "all_plant_harvest_button")]
+[node name="Room3Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=939687625 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "speed_price_label", "grid_container", "plant_button", "plant_label", "plant_price_label", "all_plant_harvest_button")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_kbped")
 money_label = NodePath("MarginContainer/Room1/HBoxContainer/MoneyLabel")
-speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton")
-speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedLabel")
+speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SpeedLabel")
+speed_price_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/SpeedPriceLabel")
 grid_container = NodePath("MarginContainer/Room1/ScrollContainer/2")
-plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton")
-plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantLabel")
+plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/PlantLabel")
+plant_price_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/PlantPriceLabel")
 index = 2
 all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer2/AllPlantHarvest")
 
@@ -349,33 +404,57 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Money : 0"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=2113420776]
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=912639664]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=466608242]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=809465040]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer" unique_id=365693874]
+layout_mode = 2
+
+[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1455246031]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Speed"
 
-[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1420440933]
+[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1879209938]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Speed : 0.25x"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=675634004]
+[node name="SpeedPriceLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer" unique_id=349059407]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price : "
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer" unique_id=1502130088]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1800810270]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1297317296]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer" unique_id=279922570]
+layout_mode = 2
+
+[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=2123115926]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Plant"
 
-[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1308048607]
+[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=640443934]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Plants :"
+
+[node name="PlantPriceLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer" unique_id=254986630]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price : "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1" unique_id=1101760553]
 layout_mode = 2
@@ -401,18 +480,20 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Plant all/Harvest all"
 
-[node name="Room4Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=1052038102 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "grid_container", "plant_button", "plant_label", "all_plant_harvest_button")]
+[node name="Room4Panel" type="PanelContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer" unique_id=1052038102 node_paths=PackedStringArray("money_label", "speed_button", "speed_label", "speed_price_label", "grid_container", "plant_button", "plant_label", "plant_price_label", "all_plant_harvest_button")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_kbped")
 money_label = NodePath("MarginContainer/Room1/HBoxContainer/MoneyLabel")
-speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton")
-speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedLabel")
+speed_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SpeedButton")
+speed_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SpeedLabel")
+speed_price_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/SpeedPriceLabel")
 grid_container = NodePath("MarginContainer/Room1/ScrollContainer/3")
-plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton")
-plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantLabel")
+plant_button = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/PlantButton")
+plant_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/PlantLabel")
+plant_price_label = NodePath("MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/PlantPriceLabel")
 index = 3
 all_plant_harvest_button = NodePath("MarginContainer/HBoxContainer/AllPlantHarvest")
 
@@ -435,33 +516,57 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Money : 0"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=1200372219]
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=1642783398]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1308709867]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1907296735]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer" unique_id=793724297]
+layout_mode = 2
+
+[node name="SpeedButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1731970909]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Speed"
 
-[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer" unique_id=1351633529]
+[node name="SpeedLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1655226715]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Speed : 0.25x"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=1894757855]
+[node name="SpeedPriceLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/VBoxContainer" unique_id=411203048]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price : "
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer" unique_id=1198925679]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1927919904]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=1201692199]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer" unique_id=728697225]
+layout_mode = 2
+
+[node name="PlantButton" type="Button" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1401380317]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Plant"
 
-[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2" unique_id=463492319]
+[node name="PlantLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1249466158]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Plants :"
+
+[node name="PlantPriceLabel" type="Label" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/VBoxContainer" unique_id=2104415638]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price : "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1" unique_id=355080215]
 layout_mode = 2
@@ -701,9 +806,3 @@ size_flags_vertical = 8
 max_value = 1000000.0
 
 [connection signal="timeout" from="Timer" to="RoomManager" method="_on_timer_timeout"]
-[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
-[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room2Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]
-[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
-[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room3Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]
-[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
-[connection signal="pressed" from="RoomManager/VBoxContainer/Game/HBoxContainer/Room4Panel/MarginContainer/Room1/HBoxContainer/HBoxContainer2/PlantButton" to="." method="_on_plant_button_pressed"]

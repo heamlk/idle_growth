@@ -3,9 +3,11 @@ extends PanelContainer
 @export var money_label: Label 
 @export var speed_button: Button
 @export var speed_label: Label 
+@export var speed_price_label: Label 
 @export var grid_container: GridContainer
 @export var plant_button: Button 
 @export var plant_label: Label 
+@export var plant_price_label: Label 
 @export var index : int
 
 @export var all_plant_harvest_button : Button
@@ -13,6 +15,7 @@ extends PanelContainer
 @onready var progress_bar: ProgressBar = $"../../../../ProgressBar"
 
 const PLANT = preload("uid://no2qd4m2mssy")
+const TOMATO = preload("uid://cae75r74u1jvn")
 
 
 func _ready() -> void:
@@ -28,23 +31,25 @@ func _ready() -> void:
 	speed_button.tooltip_text = "Price : " + str(Global.speed_price[index])
 
 func display_money():
-	var money := Global.money
+	var money : float = Global.money
 	money_label.text = "Money : " + str(money) + " $"
 	progress_bar.value = money
 	#SaveLoad.contents_to_save.money = money
 	#SaveLoad._save()
 
 func display_speed_price():
-	speed_button.tooltip_text = "Price : " + str(Global.speed_price[index])
+	speed_price_label.text = "Price : " + str(Global.speed_price[index]) + " $"
 	speed_label.text = "Speed : " + str(Global.plant_speed[index]) + "x"
 	if Global.plant_speed[index] >= 2:
 		speed_button.disabled = true
+		speed_button.text = "Maxed"
 
 func display_plant_price():
-	plant_button.tooltip_text = "Price : " + str(Global.plant_price[index])
+	plant_price_label.text = "Price : " + str(Global.plant_price[index]) + " $"
 	plant_label.text = "Plants : " + str(Global.plants[index]) + "x"
 	if Global.plants[index] == Global.plant_limit[index]:
 		plant_button.disabled = true
+		plant_button.text = "Maxed"
 
 func _on_speed_button_pressed() -> void:
 	if Global.money >= Global.speed_price[index] and Global.plants[index] >= 1:
@@ -61,8 +66,12 @@ func _on_speed_button_pressed() -> void:
 
 func _on_plant_button_pressed() -> void:
 	if Global.money >= Global.plant_price[index] and Global.plants[index] < Global.plant_limit[index]:
-		var new_plant := PLANT.instantiate()
-		grid_container.add_child(new_plant)
+		if randf() > 0.5:
+			var new_plant := PLANT.instantiate()
+			grid_container.add_child(new_plant)
+		else :
+			var new_plant := TOMATO.instantiate()
+			grid_container.add_child(new_plant)
 		
 		Global.money -= Global.plant_price[index]
 		Global.plants[index] += 1

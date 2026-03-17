@@ -5,7 +5,7 @@ signal plant_price_signal
 signal speed_price_signal
 signal all_plant_harvest_signal(_index)
 
-var money : float: #saved
+var money : float : #saved
 	set(value):
 		money = snapped(value, 0.01)
 		money_signal.emit()

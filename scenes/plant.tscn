@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://no2qd4m2mssy"]
 
-[ext_resource type="Script" uid="uid://dxyt1ystpelfm" path="res://plant.gd" id="1_c2kdh"]
+[ext_resource type="Script" uid="uid://dxyt1ystpelfm" path="res://scripts/plant.gd" id="1_c2kdh"]
 [ext_resource type="Texture2D" uid="uid://drw33g201sqsp" path="res://FarmSprites/sprite_sheet.png" id="2_mbetm"]
 [ext_resource type="AudioStream" uid="uid://ddbmy1trb0ydr" path="res://Sounds/plant.wav" id="3_qljma"]
 [ext_resource type="AudioStream" uid="uid://qiod3a4mpqk6" path="res://Sounds/harvest.wav" id="4_4oa58"]
